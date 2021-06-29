@@ -1,19 +1,24 @@
+(based on https://github.com/julianjupiter/java-web-app-with-embedded-tomcat)
+
 # Java Web Application with Embedded Tomcat
 
-This is a web application in Java with Apache Tomcat embedded to the JAR (not WAR), called fat JAR. Other dependencies are also included in the JAR.
+This is a simple web application in Java with Apache Tomcat and other dependencies embedded in a JAR.
+This is used as showcase for [root360 deployments](https://www.root360.de/skalierbares-cloud-deployment/).
 
 # Running the application
 ```
 git clone https://github.com/julianjupiter/java-web-app-with-embedded-tomcat
-cd java-web-app-with-embedded-tomcat
+cd simple-java-web-app
 mvn clean package && java -jar ./target/java-web-app-with-embedded-tomcat-1.0.0-SNAPSHOT.jar
 ```
 Open your browser: http://localhost:8080/app
 
-# Screenshots
-## Home
-![alt text](java-web-app-with-embedded-tomcat_1.PNG "Home")
-## List of Books
-![alt text](java-web-app-with-embedded-tomcat_2.PNG "List of Books")
-## View a Book
-![alt text](java-web-app-with-embedded-tomcat_3.PNG "View a Book")
+# Creating a Release
+
+1. build app
+   ```
+   git clone https://github.com/julianjupiter/java-web-app-with-embedded-tomcat
+   cd simple-java-web-app
+   bash release.sh
+   ```
+2. upload generated jar file to Github Releases

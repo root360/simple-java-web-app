@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Java Web Application with Embedded Tomcat</title>
+		<title>root360 - Java Web Application with Embedded Tomcat</title>
 	</head>
 	<body>
 		<h1>Hello, world!</h1>
