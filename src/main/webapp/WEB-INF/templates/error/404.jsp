@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>root360 - Java Web Application with Embedded Tomcat</title>
+		<title>root360 - simple Java App with Tomcat</title>
 	</head>
 	<body>
 		<h1>Error 404, Page not found!</h1>

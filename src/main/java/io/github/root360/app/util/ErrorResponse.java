@@ -1,4 +1,4 @@
-package io.github.julianjupiter.app.util;
+package io.github.root360.app.util;
 
 public class ErrorResponse {
 	private Error error; 

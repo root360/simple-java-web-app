@@ -1,4 +1,4 @@
-package io.github.julianjupiter.app.server;
+package io.github.root360.app.server;
 
 import java.io.File;
 
@@ -16,9 +16,9 @@ public class TomcatServer implements Server {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TomcatServer.class);
 	private static final String DEFAULT_HOST = "localhost";
 	private static final int DEFAULT_PORT = 8080;
-	private static final String DEFAULT_CONTEXT_PATH = "/app";
+	private static final String DEFAULT_CONTEXT_PATH = "/";
 	private static final String DOC_BASE = ".";
-	private static final String ADDITION_WEB_INF_CLASSES = "target/classes";
+	// private static final String ADDITION_WEB_INF_CLASSES = "./classes";
 	private static final String WEB_APP_MOUNT = "/WEB-INF/classes";
 	private static final String INTERNAL_PATH = "/";
 
@@ -66,10 +66,10 @@ public class TomcatServer implements Server {
 
 	private Context context(Tomcat tomcat) {
 		Context context = tomcat.addWebapp(DEFAULT_CONTEXT_PATH, DOC_BASE);
-		File classes = new File(ADDITION_WEB_INF_CLASSES);
-		String base = classes.getAbsolutePath();
+		//File classes = new File(ADDITION_WEB_INF_CLASSES);
+		//String base = classes.getAbsolutePath();
 		WebResourceRoot resources = new StandardRoot(context);
-		resources.addPreResources(new DirResourceSet(resources, WEB_APP_MOUNT, base, INTERNAL_PATH));
+		//resources.addPreResources(new DirResourceSet(resources, WEB_APP_MOUNT, base, INTERNAL_PATH));
 		context.setResources(resources);
 
 		return context;

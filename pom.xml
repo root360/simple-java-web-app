@@ -2,13 +2,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.julianjupiter</groupId>
-	<artifactId>java-web-app-with-embedded-tomcat</artifactId>
+	<groupId>io.github.root360</groupId>
+	<artifactId>root360-simple-tomcat-jar</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>java-web-app-with-embedded-tomcat</name>
-	<description>Java Web Application with Embedded Tomcat.</description>
+	<name>root360-simple-tomcat-jar</name>
+	<description>Simple Java WebApp with tomcat by root360.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<tomcat.version>9.0.36</tomcat.version>
-        <slf4j.version>1.7.30</slf4j.version>
+		<slf4j.version>1.7.30</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -102,7 +102,7 @@
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>io.github.julianjupiter.app.Main</mainClass>
+									<mainClass>io.github.root360.app.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

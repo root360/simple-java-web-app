@@ -1,4 +1,4 @@
-package io.github.julianjupiter.app.controller;
+package io.github.root360.app.controller;
 
 import java.io.IOException;
 
