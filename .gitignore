@@ -7,3 +7,4 @@ tomcat.8080/
 .idea/
 *.iml
 *.gz
+**.jar
