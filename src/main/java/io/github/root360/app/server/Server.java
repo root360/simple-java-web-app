@@ -1,7 +1,7 @@
 package io.github.root360.app.server;
 
 /**
- * Interface for Tomcat Server
+ * Interface for Tomcat Server.
  *
  * <p>based on work of Julian Jupiter
  *
@@ -9,7 +9,7 @@ package io.github.root360.app.server;
  */
 public interface Server {
   /**
-   * interface definition
+   * interface definition.
    *
    * @param args String... list of arguments
    */

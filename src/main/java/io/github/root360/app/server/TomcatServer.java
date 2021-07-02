@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Class to control TomcatServer
+ * Class to control TomcatServer.
  *
  * <p>based on work of Julian Jupiter
  *
@@ -18,19 +18,19 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("PMD.AtLeastOneConstructor")
 public class TomcatServer implements Server {
 
-  /** logger object */
+  /** logger object. */
   private static final Logger LOGGER = LoggerFactory.getLogger(TomcatServer.class);
-  /** default listen host */
+  /** default listen host. */
   private static final String DEFAULT_HOST = "localhost";
-  /** default listen port */
+  /** default listen port. */
   private static final int DEFAULT_PORT = 8080;
-  /** default context path to react on */
+  /** default context path to react on. */
   private static final String CONTEXT_PATH = "/";
-  /** default document root */
+  /** default document root. */
   private static final String DOC_BASE = ".";
 
   /**
-   * overwrite run() of tomcat to provide usage information
+   * overwrite run() of tomcat to provide usage information.
    *
    * @param args String... list of strings provided as arguments
    */
@@ -63,7 +63,7 @@ public class TomcatServer implements Server {
   }
 
   /**
-   * validate given port
+   * validate given port.
    *
    * @param args String... list of strings to derive port from
    * @return port as integer

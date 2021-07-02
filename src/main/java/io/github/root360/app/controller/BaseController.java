@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Class to handle requests
+ * Class to handle requests.
  *
  * <p>based on work of Julian Jupiter
  *
@@ -16,15 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("PMD.AtLeastOneConstructor")
 public class BaseController extends HttpServlet {
 
-  /** define serial version for HttpServlet */
+  /** define serial version for HttpServlet. */
   private static final long serialVersionUID = 632349127293785744L;
-  /** default prefix for templates */
+  /** default prefix for templates. */
   private static final String VIEW_PREFIX = "/WEB-INF/templates/";
-  /** default suffix for templates */
+  /** default suffix for templates. */
   private static final String VIEW_SUFFIX = ".jsp";
 
   /**
-   * return action based on request
+   * return action based on request.
    *
    * @param request HttpServletRequest request given by Tomcat
    * @return String action to be called
@@ -36,7 +36,7 @@ public class BaseController extends HttpServlet {
   }
 
   /**
-   * render template based on request
+   * render template based on request.
    *
    * @param request HttpServletRequest request given by Tomcat
    * @param response HttpServletResponse reponse to be sent by Tomcat
@@ -52,7 +52,7 @@ public class BaseController extends HttpServlet {
   }
 
   /**
-   * send redirect link based on given path
+   * send redirect link based on given path.
    *
    * @param response HttpServletResponse response to be sent by Tomcat
    * @param path String path to sent as redirct link

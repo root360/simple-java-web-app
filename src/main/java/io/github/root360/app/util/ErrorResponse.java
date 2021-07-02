@@ -1,7 +1,7 @@
 package io.github.root360.app.util;
 
 /**
- * Class to handle error responses
+ * Class to handle error responses.
  *
  * <p>based on work of Julian Jupiter
  *
@@ -13,7 +13,7 @@ public class ErrorResponse {
   private Error error;
 
   /**
-   * return error object
+   * return error object.
    *
    * @return Error current error object
    */
@@ -22,7 +22,7 @@ public class ErrorResponse {
   }
 
   /**
-   * stores error object
+   * stores error object.
    *
    * @param error object to be stored as error
    */

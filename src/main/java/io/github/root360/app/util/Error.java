@@ -3,7 +3,7 @@ package io.github.root360.app.util;
 import java.time.ZonedDateTime;
 
 /**
- * Class to handle errors DataClass most likely required for Tomcat
+ * Class to handle errors DataClass most likely required for Tomcat.
  *
  * <p>based on work of Julian Jupiter
  *
@@ -11,13 +11,13 @@ import java.time.ZonedDateTime;
  */
 @SuppressWarnings({"PMD.AtLeastOneConstructor", "PMD.DataClass"})
 public class Error {
-  /** string to store error message */
+  /** string to store error message. */
   private String message;
-  /** datetime object storing time error was created */
+  /** datetime object storing time error was created. */
   private ZonedDateTime createdAt;
 
   /**
-   * return error message
+   * return error message.
    *
    * @return String error message
    */
@@ -26,7 +26,7 @@ public class Error {
   }
 
   /**
-   * store error message
+   * store error message.
    *
    * @param message error message to store
    */
@@ -35,7 +35,7 @@ public class Error {
   }
 
   /**
-   * return object containing the datetime the error was stored
+   * return object containing the datetime the error was stored.
    *
    * @return ZonedDateTime datetime of the error message
    */
@@ -44,7 +44,7 @@ public class Error {
   }
 
   /**
-   * store datetime of error message
+   * store datetime of error message.
    *
    * @param createdAt datetime object to store
    */

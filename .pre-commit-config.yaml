@@ -24,8 +24,12 @@ repos:
     rev: v2.1.0
     hooks:
       - id: pretty-format-java
-        args: [--autofix]
+        args:
+          - '--autofix'
   - repo: https://github.com/gherynos/pre-commit-java
     rev: v0.1.0
     hooks:
       - id: checkstyle
+        args:
+          - '-c'
+          - 'src/main/resources/google_checks.xml'
