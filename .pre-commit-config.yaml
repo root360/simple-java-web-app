@@ -20,14 +20,12 @@ repos:
     hooks:
       - id: pmd
       - id: cpd
-  - repo: https://github.com/dustinsand/pre-commit-jvm
-    rev: v0.2.0
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.1.0
     hooks:
-      - id: google-java-formatter-jdk8
-        args: [--replace, --set-exit-if-changed]
+      - id: pretty-format-java
+        args: [--autofix]
   - repo: https://github.com/gherynos/pre-commit-java
     rev: v0.1.0
     hooks:
-      - id: pmd
-      - id: cpd
       - id: checkstyle
