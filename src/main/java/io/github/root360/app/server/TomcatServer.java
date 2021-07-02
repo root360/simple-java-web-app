@@ -1,77 +1,94 @@
 package io.github.root360.app.server;
 
-import java.io.File;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * Class to control TomcatServer
+ *
+ * based on work of Julian Jupiter
+ *
+ * @author Andreas Ulm
+ */
+@SuppressWarnings("PMD.AtLeastOneConstructor")
 public class TomcatServer implements Server {
 
+	/**
+	 * logger object
+	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(TomcatServer.class);
+	/**
+	 * default listen host
+	 */
 	private static final String DEFAULT_HOST = "localhost";
+	/**
+	 * default listen port
+	 */
 	private static final int DEFAULT_PORT = 8080;
-	private static final String DEFAULT_CONTEXT_PATH = "/";
+	/**
+	 * default context path to react on
+	 */
+	private static final String CONTEXT_PATH = "/";
+	/**
+	 * default document root
+	 */
 	private static final String DOC_BASE = ".";
-	// private static final String ADDITION_WEB_INF_CLASSES = "./classes";
-	private static final String WEB_APP_MOUNT = "/WEB-INF/classes";
-	private static final String INTERNAL_PATH = "/";
 
+	/**
+	 * overwrite run() of tomcat to provide usage information
+	 *
+	 * @param args String... list of strings provided as arguments
+	 */
 	@Override
-	public void run(String[] args) {
-		int port = port(args);
-		Tomcat tomcat = tomcat(port);
-
-		try {
-			tomcat.start();
-		} catch (LifecycleException exception) {
-			LOGGER.error("{}", exception.getMessage());
-			LOGGER.error("Exit...");
-			System.exit(1);
-		}
-
-		LOGGER.info("Application started with URL {}.", DEFAULT_HOST + ":" + port + DEFAULT_CONTEXT_PATH);
-		LOGGER.info("Hit Ctrl + D or C to stop it...");
-		tomcat.getServer().await();
-	}
-
-	private int port(String[] args) {
-		if (args.length > 0) {
-			String port = args[0];
-			try {
-				return Integer.valueOf(port);
-			} catch (NumberFormatException exception) {
-				LOGGER.error("Invalid port number argument {}", port, exception);
-			}
-		}
-
-		return DEFAULT_PORT;
-	}
-
-	private Tomcat tomcat(int port) {
-		Tomcat tomcat = new Tomcat();
+	@SuppressWarnings("PMD.LawOfDemeter")
+	public void run(final String... args) {
+		final int port = port(args);
+		final Tomcat tomcat = new Tomcat();
 		tomcat.setHostname(DEFAULT_HOST);
 		tomcat.getHost().setAppBase(DOC_BASE);
 		tomcat.setPort(port);
 		tomcat.getConnector();
-		context(tomcat);
-
-		return tomcat;
-	}
-
-	private Context context(Tomcat tomcat) {
-		Context context = tomcat.addWebapp(DEFAULT_CONTEXT_PATH, DOC_BASE);
-		//File classes = new File(ADDITION_WEB_INF_CLASSES);
-		//String base = classes.getAbsolutePath();
-		WebResourceRoot resources = new StandardRoot(context);
-		//resources.addPreResources(new DirResourceSet(resources, WEB_APP_MOUNT, base, INTERNAL_PATH));
+		final Context context = tomcat.addWebapp(CONTEXT_PATH, DOC_BASE);
+		final WebResourceRoot resources = new StandardRoot(context);
 		context.setResources(resources);
 
-		return context;
+		try {
+			tomcat.start();
+		} catch (LifecycleException exception) {
+			if (LOGGER.isErrorEnabled()) {
+				LOGGER.error("Error during start: {}", exception.getMessage());
+			}
+			LOGGER.error("Exit...");
+			return;
+		}
+
+		LOGGER.info("Application started with URL {}:{}{}.", DEFAULT_HOST, port, CONTEXT_PATH);
+		LOGGER.info("Hit Ctrl + D or C to stop it...");
+		tomcat.getServer().await();
+	}
+
+	/**
+	 * validate given port
+	 *
+	 * @param args String... list of strings to derive port from
+	 * @return port as integer
+	 */
+	private int port(final String... args) {
+		int port = DEFAULT_PORT;
+		if (args.length > 0) {
+			try {
+				port = Integer.valueOf(args[0]);
+			} catch (NumberFormatException exception) {
+				LOGGER.error("Invalid port number argument {}", args[0], exception);
+			}
+		}
+
+		return port;
 	}
 }

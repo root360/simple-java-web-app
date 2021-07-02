@@ -1,5 +1,5 @@
 <%@ include file="init.jsp"%>
-<c:if test="${not empty param.pageName}"> 
+<c:if test="${not empty param.pageName}">
     <c:set var="pageName" value="${param.pageName}" />
 </c:if>
 <!doctype html>
