@@ -9,9 +9,9 @@ This is used as showcase for [root360 deployments](https://www.root360.de/skalie
 ```
 git clone https://github.com/julianjupiter/java-web-app-with-embedded-tomcat
 cd simple-java-web-app
-mvn clean package && java -jar ./target/java-web-app-with-embedded-tomcat-1.0.0-SNAPSHOT.jar
+mvn clean package && bash run.sh
 ```
-Open your browser: http://localhost:8080/app
+Open your browser: http://localhost:8080/
 
 # Creating a Release
 
@@ -19,6 +19,15 @@ Open your browser: http://localhost:8080/app
    ```
    git clone https://github.com/julianjupiter/java-web-app-with-embedded-tomcat
    cd simple-java-web-app
-   bash release.sh
+   bash release.sh target-version
+   # e.g. bash release.sh v1.0.1
    ```
-2. upload generated jar file to Github Releases
+2. upload generated jar file from target/ to Github Releases
+
+# Developing the application
+
+This project used [pre-commit](https://pre-commit.com) to run some code checks on every commit.
+
+1. install pre-commit `pip install pre-commit`
+2. activate pre-commit `pre-commit install`
+3. commit your changes
