@@ -1,7 +1,7 @@
 <%@ page import = " java.util.* " %>
         <div class="container">
             <div class="hero-unit">
-                <h1><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/6000441619/logo/k68pEIS95R2nxQjoEu3NlXZmeizE70Y10Q.png"> Sample Java App</h1>
+	        <h1><img src="${pageContext.request.contextPath}/assets/root360.svg" width="200px"> Sample Java App</h1>
                 <hr>
                 <h2>Congratulations!</h2>
                 <p>Your Java application is now running on the host &ldquo;<%= java.net.InetAddress.getLocalHost().getHostName() %>&rdquo; in your own dedicated environment in the AWS&nbsp;Cloud.</p>

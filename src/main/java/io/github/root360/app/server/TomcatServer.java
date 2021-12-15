@@ -5,8 +5,8 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.StandardRoot;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class to control TomcatServer.
@@ -19,13 +19,13 @@ import org.slf4j.LoggerFactory;
 public class TomcatServer implements Server {
 
   /** logger object. */
-  private static final Logger LOGGER = LoggerFactory.getLogger(TomcatServer.class);
+  private static final Logger LOGGER = LogManager.getLogger(TomcatServer.class);
   /** default listen host. */
   private static final String DEFAULT_HOST = "localhost";
   /** default listen port. */
   private static final int DEFAULT_PORT = 8080;
   /** default context path to react on. */
-  private static final String CONTEXT_PATH = "/";
+  private static final String CONTEXT_PATH = "";
   /** default document root. */
   private static final String DOC_BASE = ".";
 
@@ -81,3 +81,4 @@ public class TomcatServer implements Server {
     return port;
   }
 }
+// vim: ts=2 sw=2 et
