@@ -10,13 +10,13 @@ echo "Building package with version '${version}'"
 cat > /tmp/build.sh <<EOF
 #!/bin/bash
 export DEBIAN_FRONTEND="noninteractive"
-apt update -qq -y >/dev/null
-apt install -qq -y maven >/dev/null
+export MAVEN_OPTS="-Dmaven.repo.local=/maven"
+apt-get update -qq -y >/dev/null
+apt-get install -qq -y maven >/dev/null
 
 cd /app
 sed -i "s/1.0.0-SNAPSHOT/${version}/" pom.xml
 mvn clean package
-git checkout pom.xml
 chown -R "${UID}:${UID}" ./
 EOF
 
@@ -26,6 +26,8 @@ rm -rf "${SCRIPTDIR}/target"
 
 git tag --annotate "${version}" -s -m "release of ${version}"
 
-docker run -ti --rm -v "${SCRIPTDIR}:/app" -v "/tmp/build.sh:/build.sh" ubuntu:focal /build.sh
+docker run -ti --rm -v "/tmp/m2_home:/maven" -v "${SCRIPTDIR}:/app" -v "/tmp/build.sh:/build.sh" ubuntu:focal /build.sh
+
+git checkout pom.xml
 
 rm -f /tmp/build.sh

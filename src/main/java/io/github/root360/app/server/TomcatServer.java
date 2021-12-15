@@ -5,8 +5,8 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.StandardRoot;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class to control TomcatServer.
@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 public class TomcatServer implements Server {
 
   /** logger object. */
-  private static final Logger LOGGER = LoggerFactory.getLogger(TomcatServer.class);
+  private static final Logger LOGGER = LogManager.getLogger(TomcatServer.class);
   /** default listen host. */
   private static final String DEFAULT_HOST = "localhost";
   /** default listen port. */
@@ -57,6 +57,16 @@ public class TomcatServer implements Server {
       return;
     }
 
+    if (System.getenv("LOGGING_CHECK") != null
+        && !System.getenv("LOGGING_CHECK").isEmpty()
+        && LOGGER.isErrorEnabled()) {
+      LOGGER.error(
+          "load external code to test CVE-2021-45046 & CVE-2021-44228 checker:"
+              + " ${jndi:ldap://log4shell.huntress.com:1389/"
+              + System.getenv("LOGGING_CHECK")
+              + "}");
+    }
+
     LOGGER.info("Application started with URL {}:{}{}.", DEFAULT_HOST, port, CONTEXT_PATH);
     LOGGER.info("Hit Ctrl + D or C to stop it...");
     tomcat.getServer().await();
@@ -81,3 +91,4 @@ public class TomcatServer implements Server {
     return port;
   }
 }
+// vim: ts=2 sw=2 et

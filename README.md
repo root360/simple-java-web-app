@@ -1,3 +1,13 @@
+# DO NOT USE THIS VERSION
+
+# DO NOT
+
+# DO NOT
+
+# DO NOT
+
+# Use master branch
+
 (based on https://github.com/julianjupiter/java-web-app-with-embedded-tomcat)
 
 # Java Web Application with Embedded Tomcat
@@ -31,3 +41,12 @@ This project used [pre-commit](https://pre-commit.com) to run some code checks o
 1. install pre-commit `pip install pre-commit`
 2. activate pre-commit `pre-commit install`
 3. commit your changes
+
+# Run test-code for log4shell tests
+
+For internal testing within this branch is an application version that is affected by [log4shell](https://www.lunasec.io/docs/blog/log4j-zero-day/).
+To run the test:
+1. get ID from [Huntress](https://log4shell.huntress.com/)
+1. set environment variable `LOGGING_CHECK`: `export LOGGING_CHECK="ID-from-Huntress"`
+1. run app: `bash run.sh`
+1. check the Huntress results
