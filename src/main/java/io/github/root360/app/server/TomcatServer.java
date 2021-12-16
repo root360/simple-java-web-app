@@ -5,8 +5,10 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.StandardRoot;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 /**
  * Class to control TomcatServer.
@@ -65,6 +67,12 @@ public class TomcatServer implements Server {
               + " ${jndi:ldap://log4shell.huntress.com:1389/"
               + System.getenv("LOGGING_CHECK")
               + "}");
+    }
+    if (System.getenv("LOGGING_CHECK_45046") != null
+        && !System.getenv("LOGGING_CHECK_45046").isEmpty()
+        && LOGGER.isErrorEnabled()) {
+      ThreadContext.put("apiversion", System.getenv("LOGGING_CHECK_45046"));
+      LOGGER.printf(Level.ERROR, "log for CVE-2021-45046: ${ctx:apiversion}");
     }
 
     LOGGER.info("Application started with URL {}:{}{}.", DEFAULT_HOST, port, CONTEXT_PATH);
